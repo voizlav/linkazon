@@ -36,7 +36,8 @@ const showSuccessMessage = (info) => {
 };
 
 const showErrorMessage = (info) => {
-  info.textContent = "Error processing request. Please try again";
+  info.textContent = "Error processing request";
+  setTimeout(() => (info.textContent = ""), 3000);
 };
 
 const showInvalidPageMessage = (btn, info) => {
