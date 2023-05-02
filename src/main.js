@@ -25,12 +25,12 @@ const addClickHandler = (btn, url, info) => {
   });
 };
 
-const copyToClipboard = (text) => {
-  navigator.clipboard.writeText(text);
+const copyToClipboard = (link) => {
+  navigator.clipboard.writeText(link);
 };
 
 const showSuccessMessage = (info) => {
-  info.textContent = "Link shortened and copied to clipboard.";
+  info.textContent = "Link shortened and copied to clipboard";
   info.style.color = "white";
   setTimeout(() => {
     info.textContent = "";
@@ -38,11 +38,11 @@ const showSuccessMessage = (info) => {
 };
 
 const showErrorMessage = (info) => {
-  info.textContent = "Error processing request. Please try again.";
+  info.textContent = "Error processing request. Please try again";
 };
 
 const showInvalidPageMessage = (btn, info) => {
-  info.textContent = "Shortening is exclusive to Amazon products page.";
+  info.textContent = "Shortening is exclusive to Amazon products page";
   btn.disabled = true;
   btn.style.cursor = "not-allowed";
   btn.style.opacity = 0.3;
