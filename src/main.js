@@ -31,10 +31,8 @@ const copyToClipboard = (link) => {
 
 const showSuccessMessage = (info) => {
   info.textContent = "Link shortened and copied to clipboard";
-  info.style.color = "white";
-  setTimeout(() => {
-    info.textContent = "";
-  }, 5000);
+  info.style.color = "#7FDA69";
+  setTimeout(() => (info.textContent = ""), 3000);
 };
 
 const showErrorMessage = (info) => {
