@@ -1,4 +1,4 @@
-const main = () => {
+const init = () => {
   const btn = document.querySelector("button");
   const info = document.querySelector(".info");
 
@@ -6,26 +6,46 @@ const main = () => {
     const url = tabs[0].url;
     if (isAmazon(url) && isProduct(url)) {
       btn.style.backgroundColor = "#F0C419";
-      btn.addEventListener("click", () => {
-        const result = generateLink(url);
-        if (result) {
-          navigator.clipboard.writeText(result);
-          info.textContent = "Link shortened and copied to clipboard.";
-          info.style.color = "white";
-          setTimeout(() => {
-            info.textContent = "";
-          }, 5000);
-        } else {
-          info.textContent = "Error processing request. Please try again.";
-        }
-      });
+      addClickHandler(btn, url, info);
     } else {
-      info.textContent = "Shortening is exclusive to Amazon products page.";
-      btn.disabled = true;
-      btn.style.cursor = "not-allowed";
-      btn.style.opacity = 0.3;
+      showInvalidPageMessage(btn, info);
     }
   });
+};
+
+const addClickHandler = (btn, url, info) => {
+  btn.addEventListener("click", () => {
+    const result = generateLink(url);
+    if (result) {
+      copyToClipboard(result);
+      showSuccessMessage(info);
+    } else {
+      showErrorMessage(info);
+    }
+  });
+};
+
+const copyToClipboard = (text) => {
+  navigator.clipboard.writeText(text);
+};
+
+const showSuccessMessage = (info) => {
+  info.textContent = "Link shortened and copied to clipboard.";
+  info.style.color = "white";
+  setTimeout(() => {
+    info.textContent = "";
+  }, 5000);
+};
+
+const showErrorMessage = (info) => {
+  info.textContent = "Error processing request. Please try again.";
+};
+
+const showInvalidPageMessage = (btn, info) => {
+  info.textContent = "Shortening is exclusive to Amazon products page.";
+  btn.disabled = true;
+  btn.style.cursor = "not-allowed";
+  btn.style.opacity = 0.3;
 };
 
 const isAmazon = (url) => {
@@ -41,4 +61,4 @@ const generateLink = (longUrl) => {
   return substring ? `amazon.com${substring[0]}` : null;
 };
 
-main();
+init();
