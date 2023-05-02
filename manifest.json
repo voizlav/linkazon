@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Linkazon",
+    "version": "1.0",
+    "description": "Extension for Amazon product pages generates simplified and native URL.",
+    "permissions": [
+        "activeTab",
+        "clipboardWrite",
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": "/ico/icon.png",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "48": "/ico/icon.png"
+    }
+}
