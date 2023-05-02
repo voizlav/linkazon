@@ -27,3 +27,18 @@ const main = () => {
     }
   });
 };
+
+const isAmazon = (url) => {
+  return url.indexOf("https://www.amazon.com/") === 0;
+};
+
+const isProduct = (url) => {
+  return url.includes("/dp/");
+};
+
+const generateLink = (longUrl) => {
+  const substring = longUrl.match(/\/dp\/\w+\//);
+  return substring ? `amazon.com${substring[0]}` : null;
+};
+
+main();
